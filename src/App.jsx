@@ -52,7 +52,6 @@ const inlineEmphasisPhrases = new Set(['وصول كونسيرج', 'WOSOL Concier
 const localizedCopy = {
   ar: {
     documentTitle: 'WOSOL Concierge | خطة الأعمال 2027–2029',
-    documentMap: 'Document Map',
     coverFactsAria: 'بيانات الغلاف',
     coverFacts: [
       ['سنة التأسيس', '2011'],
@@ -81,7 +80,6 @@ const localizedCopy = {
   },
   en: {
     documentTitle: 'WOSOL Concierge | Business Plan 2027–2029',
-    documentMap: 'Document Map',
     coverFactsAria: 'Cover facts',
     coverFacts: [
       ['Founding Year', '2011'],
@@ -244,7 +242,6 @@ function SingleDocumentVersion({ sections, plan, copy, language }) {
       </section>
 
       <div className="document-grid">
-        <SectionNav sections={sections} copy={copy} />
         <main className="document-content">
           <section id={`section-${summarySection.id}`} className="summary-anchor">
             <ExecutiveSummary section={summarySection} />
@@ -258,22 +255,6 @@ function SingleDocumentVersion({ sections, plan, copy, language }) {
         </main>
       </div>
     </>
-  );
-}
-
-function SectionNav({ sections, copy }) {
-  return (
-    <aside className="section-nav">
-      <div className="section-nav-label">{copy.documentMap}</div>
-      <div className="section-nav-list">
-        {sections.map((section) => (
-          <a key={section.id} href={`#section-${section.id}`}>
-            <span>{section.number}</span>
-            {section.title}
-          </a>
-        ))}
-      </div>
-    </aside>
   );
 }
 

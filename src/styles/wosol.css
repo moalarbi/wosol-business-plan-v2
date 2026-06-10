@@ -316,14 +316,14 @@ html[dir='ltr'] .cover-subtitle span + span {
 
 .document-grid {
   display: grid;
-  grid-template-columns: 238px minmax(0, 1fr);
-  gap: 46px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
   align-items: start;
 }
 
 .document-content {
   min-width: 0;
-  max-width: 900px;
+  max-width: none;
 }
 
 .section-nav {
