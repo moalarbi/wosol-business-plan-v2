@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {
   Bar,
   BarChart,
@@ -39,11 +39,6 @@ const projectColors = [
   '#8EA0B2',
   '#B8B0A6',
   '#536A82',
-];
-
-const languageOptions = [
-  { code: 'ar', label: 'AR', ariaLabel: 'العربية' },
-  { code: 'en', label: 'EN', ariaLabel: 'English' },
 ];
 
 const inlineEmphasisPattern = /(وصول كونسيرج|WOSOL Concierge)/g;
@@ -142,14 +137,10 @@ const localizedChartData = {
 };
 
 function App() {
-  const [language, setLanguage] = useState(() => {
-    if (typeof window === 'undefined') {
-      return 'ar';
-    }
-
-    return localStorage.getItem('wosol-language') || 'ar';
-  });
-  const activeLanguage = language === 'en' ? 'en' : 'ar';
+  const activeLanguage =
+    typeof window !== 'undefined' && window.location.pathname.replace(/\/+$/, '').endsWith('/en')
+      ? 'en'
+      : 'ar';
   const plan = activeLanguage === 'en' ? businessPlanEn : businessPlan;
   const copy = localizedCopy[activeLanguage];
   const sections = plan.sections;
@@ -158,14 +149,13 @@ function App() {
     document.documentElement.lang = activeLanguage;
     document.documentElement.dir = activeLanguage === 'ar' ? 'rtl' : 'ltr';
     document.title = copy.documentTitle;
-    localStorage.setItem('wosol-language', activeLanguage);
   }, [activeLanguage, copy.documentTitle]);
 
   return (
     <>
       <div className="pattern-bg" />
       <div className={`page-wrapper language-${activeLanguage}`}>
-        <DocumentHeader plan={plan} language={activeLanguage} onLanguageChange={setLanguage} />
+        <DocumentHeader plan={plan} />
         <SingleDocumentVersion sections={sections} plan={plan} copy={copy} language={activeLanguage} />
         <SiteFooter copy={copy} />
       </div>
@@ -173,34 +163,14 @@ function App() {
   );
 }
 
-function DocumentHeader({ plan, language, onLanguageChange }) {
+function DocumentHeader({ plan }) {
   return (
     <header className="site-header">
       <div className="header-meta-group">
         <div className="header-meta">{plan.meta}</div>
-        <LanguageToggle language={language} onLanguageChange={onLanguageChange} />
       </div>
       <LogoBlock />
     </header>
-  );
-}
-
-function LanguageToggle({ language, onLanguageChange }) {
-  return (
-    <div className="language-toggle" aria-label="Language selector">
-      {languageOptions.map((option) => (
-        <button
-          key={option.code}
-          type="button"
-          className={language === option.code ? 'active' : ''}
-          aria-label={option.ariaLabel}
-          aria-pressed={language === option.code}
-          onClick={() => onLanguageChange(option.code)}
-        >
-          {option.label}
-        </button>
-      ))}
-    </div>
   );
 }
 

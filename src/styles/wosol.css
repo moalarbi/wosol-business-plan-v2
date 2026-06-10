@@ -80,35 +80,6 @@ textarea {
   flex-wrap: wrap;
 }
 
-.language-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  padding: 4px;
-  background: rgba(255, 255, 255, 0.62);
-  border: 1px solid var(--border);
-}
-
-.language-toggle button {
-  appearance: none;
-  border: 0;
-  background: transparent;
-  color: var(--text-light);
-  cursor: pointer;
-  padding: 7px 9px;
-  min-width: 38px;
-  font-family: 'Poppins', sans-serif;
-  font-size: 11px;
-  line-height: 1;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.language-toggle button:hover,
-.language-toggle button.active {
-  background: var(--navy-deep);
-  color: var(--beige-warm);
-}
-
 .header-meta,
 .doc-label,
 .page-title-en,
