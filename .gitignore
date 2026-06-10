@@ -3,3 +3,4 @@ dist/
 .tools/
 .qa/
 .DS_Store
+.vercel
