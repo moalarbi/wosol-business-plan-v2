@@ -156,11 +156,13 @@ textarea {
 .cover-logo .logo-name {
   font-size: clamp(38px, 5vw, 58px);
   letter-spacing: 0.22em;
+  color: var(--navy-deep);
 }
 
 .cover-logo .logo-sub {
   font-size: clamp(14px, 1.8vw, 21px);
   letter-spacing: 0.30em;
+  color: var(--navy-deep);
   line-height: 1.1;
   margin-top: 8px;
 }
