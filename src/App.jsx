@@ -155,28 +155,15 @@ function App() {
     <>
       <div className="pattern-bg" />
       <div className={`page-wrapper language-${activeLanguage}`}>
-        <DocumentHeader plan={plan} />
         <SingleDocumentVersion sections={sections} plan={plan} copy={copy} language={activeLanguage} />
-        <SiteFooter copy={copy} />
       </div>
     </>
   );
 }
 
-function DocumentHeader({ plan }) {
+function LogoBlock() {
   return (
-    <header className="site-header">
-      <div className="header-meta-group">
-        <div className="header-meta">{plan.meta}</div>
-      </div>
-      <LogoBlock />
-    </header>
-  );
-}
-
-function LogoBlock({ footer = false }) {
-  return (
-    <div className={footer ? 'footer-logo' : 'logo-block'}>
+    <div className="logo-block">
       <span className="logo-name">WOSOL</span>
       <span className="logo-sub">CONCIERGE</span>
     </div>
@@ -780,15 +767,6 @@ function ClosingSection({ section }) {
         <p key={paragraph}>{paragraph}</p>
       ))}
     </div>
-  );
-}
-
-function SiteFooter({ copy }) {
-  return (
-    <footer className="site-footer">
-      <LogoBlock footer />
-      <div className="footer-meta">{copy.footerMeta}</div>
-    </footer>
   );
 }
 
